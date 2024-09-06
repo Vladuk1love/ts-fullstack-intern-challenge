@@ -23,6 +23,8 @@ services:
       context: ./api/
     networks:
       - cat-pinterest-net
+    ports:
+      - "3000:3000"
     environment:
       NODE_ENV: prod
     depends_on:
@@ -44,8 +46,10 @@ services:
     image: postgres:14
     networks:
       - cat-pinterest-net
+    ports:
+      - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: 1
+      POSTGRES_PASSWORD: pass
       POSTGRES_USER: postgres
       POSTGRES_DB: support_lk_db
     #      PG_DATA: /var/lib/postgresql/data
