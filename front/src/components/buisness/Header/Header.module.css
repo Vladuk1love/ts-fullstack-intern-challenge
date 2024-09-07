@@ -1,0 +1,66 @@
+.header__container{
+    background-color: #2457F0;
+    width: 100%;
+    display: flex;
+    min-height: 80px;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    color: #0a0a0b;
+}
+
+.navigation_bar{
+    display: flex;
+    padding-left: 10px;
+}
+
+.navigation_bar__page_setter{
+    display: flex;
+    padding: 10px;
+    height: 80px;
+    box-sizing: border-box;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.navigation_bar__page_setter p,.navigation_bar__page_setter__active p{
+    font-weight: 600;
+    font-size: 18px;
+}
+
+
+.navigation_bar__page_setter__active{
+    color: #fafafa;
+    display: flex;
+    background-color: #214fda54;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 80px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.authorized_user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 10px;
+    gap: 20px;
+}
+
+.authorization button{
+    background-color: #2457F0;
+    padding: 8px;
+    color: #fafafa;
+    border-radius: 10px
+}
+
+.authorization__login_button{
+    border: 1px solid #fafafa;
+}

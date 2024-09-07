@@ -7,7 +7,7 @@ import {
 import { IUser } from './interfaces/user.interface';
 import { UserAuthDto } from './dto/user.auth.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/entities/user.entity';
+import { User } from 'src/entities/users.entity';
 import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 
@@ -78,5 +78,32 @@ export class UsersService {
     });
 
     return { accessToken };
+  }
+
+  async getMe(
+    token: string,
+  ): Promise<{ name: string; email: string }> {
+    try {
+      const decoded = this.jwtService.verify(token); // Расшифровываем токен
+      const user = await this.userRepos.findOne({
+        where: { id: decoded.userId },
+      });
+
+      if (!user) {
+        throw new UnauthorizedException({
+          message: 'Пользователь не найден',
+        });
+      }
+
+      return {
+        name: user.name,
+        email: user.email,
+      };
+    } catch (err) {
+      throw new UnauthorizedException({
+        message: 'Недействительный токен',
+        error: err
+      });
+    }
   }
 }

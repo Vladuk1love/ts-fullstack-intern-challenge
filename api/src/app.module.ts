@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { LikesController } from './likes/likes.controller';
-import { LikesService } from './likes/likes.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './entities/user.entity';
+import { User } from './entities/users.entity';
 import { UsersController } from './users/users.controller';
 import { JwtModule } from '@nestjs/jwt';
+import { CatsModule } from './cats/cats.module';
+import { Like } from './entities/likes.entity';
 
 @Module({
   imports: [
@@ -17,11 +17,13 @@ import { JwtModule } from '@nestjs/jwt';
       password: 'pass',
       database: 'support_lk_db',
       // url: "postgres://postgres:1@db-endpoint:5432/support_lk_db",
-      entities: [User],
+      entities: [User, Like],
       synchronize: true,
       autoLoadEntities: true,
+      logging: true,
     }),
-    UsersModule
+    UsersModule,
+    CatsModule
   ]
 })
 export class AppModule {}

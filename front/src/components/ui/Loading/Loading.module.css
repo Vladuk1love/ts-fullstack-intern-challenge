@@ -1,0 +1,43 @@
+.loading_background{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 650px;
+    background-color: white;
+    opacity: 30%;
+    z-index: 999;
+}
+
+.loading_container {
+    --uib-size: 100px;
+    --uib-color: #2457f0;
+    --uib-speed: .9s;
+    --uib-stroke: 5px;
+    --mask-size: calc(var(--uib-size) / 2 - var(--uib-stroke));
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: var(--uib-size);
+    width: var(--uib-size);
+    -webkit-mask: radial-gradient(
+            circle var(--mask-size),
+            transparent 99%,
+            #2457f0 100%
+    );
+    mask: radial-gradient(circle var(--mask-size), transparent 99%, #2457f0 100%);
+    background-image: conic-gradient(transparent 50%, var(--uib-color));
+    animation: spin calc(var(--uib-speed)) linear infinite;
+    border-radius: 50%;
+    margin: auto;
+    z-index: 1000
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
