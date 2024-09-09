@@ -15,7 +15,7 @@ import { JwtModule } from '@nestjs/jwt';
       UsersModule,
       JwtModule.register({
         secret: 'developed_by_yurtaev',
-        signOptions: { expiresIn: '3h' }
+        signOptions: { expiresIn: '3d' }
       })
   
     ],

@@ -1,16 +1,52 @@
-import styles from './CatBlock.module.css'
+import { useState } from "react";
+import styles from "./CatBlock.module.css";
 
 interface ICatProps {
   id: string;
   url: string;
+  liked: boolean;
 }
 
 function CatBlock(props: ICatProps) {
-  return (
-    <div className={styles.cats_block__container}>
-        <img src={props.url} alt={props.id}/>
-    </div>
+  const [heart, setHeart] = useState("base");
+  // const [like, {error, data}] = useLikeMutatuion('')
+  console.log(props);
   
-)}
+
+  return (
+    <div
+      className={styles.cats_block__container}
+      onMouseEnter={() => setHeart("hovered")}
+      onMouseLeave={() => setHeart("base")}
+      // onClick={() => handleLike()}
+    >
+      <img src={props.url} width={"280px"} height={"280px"} alt={props.id} />
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        stroke="#ff0000"
+        width="45px"
+        height="45px"
+      >
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          {" "}
+          <path
+            d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"
+            fill={
+              props.liked ? "#ff0000" : heart === "base" ? "none" : "#ff6666"
+            }
+          ></path>{" "}
+        </g>
+      </svg>
+    </div>
+  );
+}
 
 export default CatBlock;

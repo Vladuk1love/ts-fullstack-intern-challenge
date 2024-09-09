@@ -1,15 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { userApi } from "./user/userApi";
+import { catsApi } from "./cats/catsApi";
 
 
 
 export const store = configureStore({
   reducer: {
-    [userApi.reducerPath]: userApi.reducer
+    [userApi.reducerPath]: userApi.reducer,
+    [catsApi.reducerPath]: catsApi.reducer
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat([
-        userApi.middleware
+        userApi.middleware,
+        catsApi.middleware
     ])
 })
 

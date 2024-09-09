@@ -1,0 +1,17 @@
+.cats_block__container{
+    box-shadow: 1px 1px 7px lightgray;
+    transition: 0.3s all ease-in-out;
+    position: relative;
+}
+
+.cats_block__container:hover{
+    scale: 1.05;
+    cursor: pointer;
+}
+
+.cats_block__container svg{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    transition: 0.3s all ease-in-out;
+}

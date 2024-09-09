@@ -12,6 +12,7 @@ import { Like } from './entities/likes.entity';
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'cat-pinterest-api-pg',
+      // host: 'localhost',
       port: 5432,
       username: 'postgres',
       password: 'pass',
@@ -21,6 +22,7 @@ import { Like } from './entities/likes.entity';
       synchronize: true,
       autoLoadEntities: true,
       logging: true,
+      migrations: ['dist/migrations/*.js'],
     }),
     UsersModule,
     CatsModule

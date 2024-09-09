@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, OneToMany, ManyToOne, CreateDateColumn } from 'typeorm';
 import {User} from './users.entity'
 
 
@@ -13,9 +13,9 @@ export class Like {
   @Column({unique: true})
   imageID:string
 
-  @Column()
-  liked: boolean;
-
-  @ManyToMany(() => User, (user) => user.likes)
+  @ManyToOne(() => User, (user) => user.likes)
   user: User;
+
+  @CreateDateColumn()
+  created_at: Date;
 }

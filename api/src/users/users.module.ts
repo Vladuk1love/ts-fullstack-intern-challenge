@@ -12,7 +12,7 @@ import { Like } from 'src/entities/likes.entity';
     JwtModule.register({
       secret: 'developed_by_yurtaev', // здесь могла быть ваша реклама
       signOptions: {
-        expiresIn: '3h'
+        expiresIn: '3d'
       }
     })
   ],
