@@ -70,15 +70,15 @@ export class CatsController {
   @HttpCode(200)
   @UseGuards(JwtAuthGuard)
   @Post('/likes')
-  async putLike(@Req() request: Request, @Body('imageId') imageId: string) {
+  async putLike(@Req() request: Request, @Body('imageID') imageID: string) {
     try {
       const user = request['user'];
       const response = await this.httpService
-        .get(`https://api.thecatapi.com/v1/images/${imageId}`)
+        .get(`https://api.thecatapi.com/v1/images/${imageID}`)
         .toPromise();
       const imageUrl = response.data.url;
       return await this.catsService
-        .putLike(user.id, imageId, imageUrl)
+        .putLike(user.id, imageID, imageUrl)
         .catch((error) => {
           throw new Error(error);
         });
@@ -88,10 +88,9 @@ export class CatsController {
     }
   }
 
-  
   @HttpCode(200)
   @UseGuards(JwtAuthGuard)
-  @Delete('/likes') // ?imageID=${imageID} 
+  @Delete('/likes') // ?imageID=${imageID}
   async unlikeCat(@Query('imageID') imageID: string, @Req() req: Request) {
     const userId = req['user'].id;
     return await this.catsService.deleteLike(userId, imageID);

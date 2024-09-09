@@ -11,8 +11,8 @@ import { Like } from './entities/likes.entity';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'cat-pinterest-api-pg',
-      // host: 'localhost',
+      // host: 'cat-pinterest-api-pg',
+      host: 'localhost',
       port: 5432,
       username: 'postgres',
       password: 'pass',

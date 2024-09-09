@@ -54,10 +54,6 @@ export class CatsService {
         where: { id: userId },
       });
 
-      const existingLike = await this.likesRepository.findOne({
-        where: { user: { id: userId }, imageID: imageID },
-      });
-
       // If the like doesn't exist, create a new one
       const newLike = this.likesRepository.create({
         user: user,

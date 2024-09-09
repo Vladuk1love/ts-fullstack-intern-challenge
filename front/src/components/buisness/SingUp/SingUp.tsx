@@ -7,10 +7,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useLayoutEffect } from "react";
 
 function SingUp() {
-  const [register, { isLoading, error }] = useRegisterUserMutation();
+  const [register, {data, isLoading, error }] = useRegisterUserMutation();
   const navigate = useNavigate();
   if (error) {
-    console.log("error:", error);
+    alert(error);
   }
 
   useLayoutEffect(() => { // до рендера компонента
@@ -58,8 +58,8 @@ function SingUp() {
             console.log('authorized');
             localStorage.setItem("token", response.data?.accessToken);
           }
-          navigate("/");
-        });
+          navigate("/")
+        }).catch((err) => {alert(err)})
       }}
     >
       {({ isSubmitting }) => (
