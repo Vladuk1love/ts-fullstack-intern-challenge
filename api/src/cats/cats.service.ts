@@ -41,7 +41,7 @@ export class CatsService {
         where: { user: { id: userId } },
       });
 
-      return likes;
+      return likes.map(like => {return {...like, liked: true}});
     } catch (error) {
       console.log(error);
       throw new Error('Не удалось вернуть лайки');
@@ -54,10 +54,16 @@ export class CatsService {
         where: { id: userId },
       });
 
+      const existingLike = await this.likesRepository.findOne({
+        where: { user: { id: userId }, imageID: imageID },
+      });
+
+      // If the like doesn't exist, create a new one
       const newLike = this.likesRepository.create({
         user: user,
         imageID: imageID,
         url: url,
+        liked: true,
       });
 
       await this.likesRepository.save(newLike);
@@ -71,6 +77,7 @@ export class CatsService {
 
   async deleteLike(userId: number, imageID: string): Promise<string> {
     try {
+      // Find the like entry for the given user and image
       const existingLike = await this.likesRepository.findOne({
         where: { user: { id: userId }, imageID: imageID },
       });
@@ -80,6 +87,7 @@ export class CatsService {
         return 'Не найден понравившийся котик';
       }
 
+      // Remove the like from the repository
       await this.likesRepository.remove(existingLike).catch(e=>{
         console.log(e);
       });

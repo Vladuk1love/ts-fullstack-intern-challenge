@@ -19,10 +19,9 @@ import { Like } from './entities/likes.entity';
       database: 'support_lk_db',
       // url: "postgres://postgres:1@db-endpoint:5432/support_lk_db",
       entities: [User, Like],
-      synchronize: true,
+      synchronize: true, 
       autoLoadEntities: true,
-      logging: true,
-      migrations: ['dist/migrations/*.js'],
+      logging: true
     }),
     UsersModule,
     CatsModule

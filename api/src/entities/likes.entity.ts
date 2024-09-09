@@ -13,6 +13,9 @@ export class Like {
   @Column({unique: true})
   imageID:string
 
+  @Column()
+  liked: boolean;
+
   @ManyToOne(() => User, (user) => user.likes)
   user: User;
 

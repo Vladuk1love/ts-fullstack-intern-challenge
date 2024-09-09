@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { ICat } from "../../interfaces/cats.interface";
 import { setAuthHeader } from "../../utils/setHeaders";
+import { ILike } from "../../interfaces/like.interface";
 
 export const catsApi = createApi({
   reducerPath: "api/cats",
@@ -12,6 +13,15 @@ export const catsApi = createApi({
     getCats: build.query<ICat[], any>({
       query: () => ({
         url: "",
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }),
+    }),
+    getOnlyLikedCats: build.mutation<ILike, any>({
+      query: () => ({
+        url: "/login",
         method: "GET",
         headers: {
           "Content-Type": "application/json",
