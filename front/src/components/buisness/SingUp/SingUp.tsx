@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useLayoutEffect } from "react";
 
 function SingUp() {
-  const [register, { data, isLoading, error }] = useRegisterUserMutation();
+  const [register, { isLoading, error }] = useRegisterUserMutation();
   const navigate = useNavigate();
   if (error) {
     console.log(error);
@@ -53,7 +53,7 @@ function SingUp() {
           return errors;
         }
       }}
-      onSubmit={async (values,event) => {
+      onSubmit={async (values) => {
         
         await register(values)
           .then((response) => {

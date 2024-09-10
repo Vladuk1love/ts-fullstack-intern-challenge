@@ -11,20 +11,17 @@ import { Like } from './entities/likes.entity';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      // host: 'cat-pinterest-api-pg',
-      host: 'localhost',
+      host: 'cat-pinterest-api-pg',
       port: 5432,
       username: 'postgres',
       password: 'pass',
       database: 'support_lk_db',
-      // url: "postgres://postgres:1@db-endpoint:5432/support_lk_db",
       entities: [User, Like],
-      synchronize: true, 
+      synchronize: true,
       autoLoadEntities: true,
-      logging: true
     }),
     UsersModule,
-    CatsModule
-  ]
+    CatsModule,
+  ],
 })
 export class AppModule {}
