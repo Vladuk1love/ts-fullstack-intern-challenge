@@ -5,7 +5,7 @@ import CatBlock from "../CatBlock/CatBlock";
 import styles from "./LikesPage.module.css";
 
 function LikesPage(props: {currPage:boolean}) {
-  const { data: cats, isLoading, error } = useGetOnlyLikedCatsQuery("");
+  const { data: cats, isLoading, error, refetch } = useGetOnlyLikedCatsQuery("");
   const [catList, setCatList] = useState(cats || []);
 
   if (error) {
@@ -13,6 +13,7 @@ function LikesPage(props: {currPage:boolean}) {
   }
 
   useEffect(() => {
+    refetch()
     if (cats) {
       setCatList(cats);
     }
