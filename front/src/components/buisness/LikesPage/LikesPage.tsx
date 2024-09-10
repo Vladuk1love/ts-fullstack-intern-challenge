@@ -4,7 +4,7 @@ import Loading from "../../ui/Loading/Loading";
 import CatBlock from "../CatBlock/CatBlock";
 import styles from "./LikesPage.module.css";
 
-function LikesPage() {
+function LikesPage(props: {currPage:boolean}) {
   const { data: cats, isLoading, error } = useGetOnlyLikedCatsQuery("");
   const [catList, setCatList] = useState(cats || []);
 
@@ -16,7 +16,7 @@ function LikesPage() {
     if (cats) {
       setCatList(cats);
     }
-  }, [cats]);
+  }, [cats, props.currPage]);
 
   const handleLikeToggle = (catId: string) => {
     const catIndex = catList.findIndex((cat) => cat.imageID === catId);
