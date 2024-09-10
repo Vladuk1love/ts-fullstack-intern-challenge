@@ -3,5 +3,13 @@
     flex-wrap: wrap;
     gap: 15px;
     padding: 15px;
-    justify-content: space-around;
+    justify-content: space-evenly;
+}
+
+.inf_scroll_loading{
+    min-height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

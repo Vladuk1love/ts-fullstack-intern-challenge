@@ -41,3 +41,22 @@
     background-color: #2457F0;
     color: #fafafa
 }
+
+@media (max-width: 400px) {
+    .singIn__form{
+        padding: 45px;
+    }
+}
+
+@media (max-width: 500px) {
+    .singIn__form{
+        scale: 0.90;
+    }
+
+    .singIn__form input{
+        scale: 1.2;
+    }
+    .singIn__form button{
+        margin-top: 100px;
+    }
+}

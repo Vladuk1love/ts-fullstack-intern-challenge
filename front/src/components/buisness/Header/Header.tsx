@@ -15,6 +15,7 @@ function Header(props: IHeaderProps) {
   if (error) {
     console.log(error);
   }
+  
   return (
     <div className={styles.header__container}>
       <div className={styles.navigation_bar}>
@@ -39,9 +40,9 @@ function Header(props: IHeaderProps) {
           <p>Любимые котики</p>
         </div>
       </div>
-      {token && data ? (
+      {token ? (
         <div className={styles.authorized_user}>
-          <p>{data.name}</p>
+          <p>{data?.name}</p>
           <img src={person} width={"30px"} height={"30px"} alt="" />
         </div>
       ) : (

@@ -7,15 +7,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { useLayoutEffect } from "react";
 
 function SingUp() {
-  const [register, {data, isLoading, error }] = useRegisterUserMutation();
+  const [register, { data, isLoading, error }] = useRegisterUserMutation();
   const navigate = useNavigate();
   if (error) {
-    alert(error);
+    console.log(error);
   }
 
-  useLayoutEffect(() => { // до рендера компонента
+  useLayoutEffect(() => {
+    // до рендера компонента
     if (localStorage.getItem("token")?.length) {
-      console.log('redirected');
+      console.log("redirected");
       navigate("/");
     }
   }, [localStorage.getItem("token")]);
@@ -52,18 +53,26 @@ function SingUp() {
           return errors;
         }
       }}
-      onSubmit={async (values) => {
-        await register(values).then((response) => {
-          if (response.data) {
-            console.log('authorized');
-            localStorage.setItem("token", response.data?.accessToken);
-          }
-          navigate("/")
-        }).catch((err) => {alert(err)})
+      onSubmit={async (values,event) => {
+        
+        await register(values)
+          .then((response) => {
+            if (response.data) {
+              console.log("authorized");
+              localStorage.setItem("token", response.data?.accessToken);
+            }
+            navigate("/");
+          })
+          .catch((err) => {
+            const errorMessage = err?.data?.message || "Неизвестная ошибка";
+            alert(errorMessage);
+          });
       }}
     >
       {({ isSubmitting }) => (
-        <Form className={styles.singUp__form}>
+        <Form
+          className={styles.singUp__form}
+        >
           <h1>Регистрация</h1>
           <Field type="text" name="name" placeholder="имя" />
           <ErrorMessage name="name" component="div" />

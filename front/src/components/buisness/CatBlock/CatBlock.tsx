@@ -47,7 +47,7 @@ function CatBlock(props: ICatProps) {
       onMouseLeave={() => heart !== "#ff0000" && setHeart("none")}
       onClick={handleLike}
     >
-      <img src={props.url} width={"280px"} height={"280px"} alt={props.id} />
+      <img src={props.url} width={"300px"} height={"300px"} alt={props.id} />
       <svg
         viewBox="0 0 24 24"
         fill="none"
